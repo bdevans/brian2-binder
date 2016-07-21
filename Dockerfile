@@ -29,7 +29,8 @@ RUN conda install --quiet --yes -n python3 \
 #RUN /home/main/anaconda2/envs/python3/bin/pip install brian2tools
 
 # Fix matplotlib font cache
-RUN rm -R /home/main/.matplolib
-RUN rm -R /home/main/.cache/matplolib
-RUN rm -R /home/main/.cache/fontconfig
+RUN rm -rf /home/main/.matplolib
+RUN rm -rf /home/main/.cache/matplolib
+RUN rm -rf /home/main/.cache/fontconfig
 RUN python -c "import matplotlib.pyplot as plt"
+
