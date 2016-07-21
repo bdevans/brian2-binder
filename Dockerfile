@@ -12,9 +12,9 @@ RUN conda install --quiet --yes \
     'matplotlib=1.5*' \
     'cython=0.23*' \
     'nose=1.3*' \
-    'brian2'
+    'brian2' \
+    'brian2tools'
 
-#    'nosetests>=1.0' \
 RUN conda install --quiet --yes -n python3 \
     pip \
     sphinx \
@@ -22,8 +22,8 @@ RUN conda install --quiet --yes -n python3 \
     'matplotlib=1.5*' \
     'cython=0.23*' \
     'nose=1.3*' \
-    'brian2'
+    'brian2' \
+    'brian2tools'
 
-RUN pip install brian2tools
-
-RUN /home/main/anaconda2/envs/python3/bin/pip install brian2tools
+#RUN pip install brian2tools
+#RUN /home/main/anaconda2/envs/python3/bin/pip install brian2tools
