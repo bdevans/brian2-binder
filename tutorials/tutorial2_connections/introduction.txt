@@ -1,0 +1,5 @@
+Tutorial 2: Connections
+-----------------------
+
+In this tutorial, we will cover in more detail the concept of a :class:`Connection`
+in Brian.
