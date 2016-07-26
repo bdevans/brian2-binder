@@ -1,0 +1,12 @@
+name: python3
+channels:
+  - brian-team
+dependencies:
+  - python=3.5
+  #- sphinx
+  #- coverage
+  - cython
+  - nose
+  - matplotlib
+  - brian2
+  - brian2tools
