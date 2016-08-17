@@ -49,6 +49,10 @@ RUN mkdir notebooks
 RUN mv tutorials notebooks/tutorials
 RUN mv examples notebooks/examples
 
+USER root
+RUN chown -R main:main $HOME/notebooks
+USER main
+
 RUN find ./notebooks -name '*.ipynb' -exec jupyter trust {} \;
 #USER $USER
 
