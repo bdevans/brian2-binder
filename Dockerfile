@@ -45,7 +45,7 @@ RUN rm generate_notebooks.py
 RUN chmod -R +wx tutorials
 RUN chmod -R +wx examples
 
-RUN mkdir notebooks
+#RUN mkdir notebooks
 RUN mv tutorials notebooks/tutorials
 RUN mv examples notebooks/examples
 
