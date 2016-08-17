@@ -1,14 +1,11 @@
-import os  # , sys, shutil, glob, codecs
+import os
+import sys
 import glob
-import fnmatch
 import nbformat as nbf
 from nbformat.v4 import reads, writes, new_markdown_cell, new_code_cell
-from nbconvert.preprocessors import ExecutePreprocessor
-from nbconvert.exporters.notebook import NotebookExporter
-from nbconvert.exporters.rst import RSTExporter
 
-#notebooks = [f for f in os.listdir('_tutorials') if f.endswith('.ipynb')]
-#examples = [f for f in os.listdir('_examples') if f.endswith('.py')]
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 note = u'''
 ### Quickstart
@@ -24,7 +21,6 @@ Feel free to create new cells using the plus button (<button class='fa fa-plus i
 </div>
 '''
 
-#os.chdir("_tutorials")
 for notebook in glob.glob('_tutorials/*.ipynb'):
     with open(notebook, 'r') as f:
         content = reads(f.read())
@@ -39,22 +35,22 @@ for notebook in glob.glob('_tutorials/*.ipynb'):
 
 magic = u'''%matplotlib notebook\n'''
 
-for example in glob.iglob('_examples/**/*.py', recursive=True):
-#for root, subFolders, files in os.walk('_examples'):
-    #for example in fnmatch.filter(files, '*.py'):
-        #os.path.join(root, example)
-    #for example in glob.glob('_examples/*.py'):
-    #for example in files:
-    with open(example, 'r') as f:
-        code = f.read()
+for root, subfolders, files in os.walk('_examples'):
+    for file in files:
+        if not file.endswith('.py'):
+            continue
+        example = os.path.join(root, file)
+        with open(example, 'r') as f:
+            code = f.read()
 
-    (base, ext) = os.path.splitext(os.path.split(example)[-1])
+        (base, ext) = os.path.splitext(os.path.split(example)[-1])
 
-    # Create blank notebook
-    content = nbf.v4.new_notebook()
-    content['cells'] = [new_markdown_cell(note),
-                        new_code_cell(magic + code)]
+        # Create blank notebook
+        content = nbf.v4.new_notebook()
+        content['cells'] = [new_markdown_cell(note),
+                            new_code_cell(magic + code)]
 
-    #notebook = ''.join(['examples/', base, '.ipynb'])
-    with open(''.join(['examples/', base, '.ipynb']), 'w') as f:
-        nbf.write(content, f)
+        if not os.path.exists(root[1:]):
+            os.mkdir(root[1:])
+        with open(''.join([root[1:], '/', base, '.ipynb']), 'w') as f:
+            nbf.write(content, f)
