@@ -3,11 +3,10 @@ import sys
 import glob
 import nbformat as nbf
 from nbformat.v4 import reads, writes, new_markdown_cell, new_code_cell
+from nbconvert.exporters.notebook import NotebookExporter
+import codecs
 
-reload(sys)
-sys.setdefaultencoding('utf8')
-
-note = u'''
+note = '''
 ### Quickstart
 To run the code below:
 
@@ -33,7 +32,7 @@ for notebook in glob.glob('_tutorials/*.ipynb'):
         nbf.write(content, f)
 
 
-magic = u'''%matplotlib notebook\n'''
+magic = '''%matplotlib notebook\n'''
 
 for root, subfolders, files in os.walk('_examples'):
     for file in files:
@@ -52,5 +51,7 @@ for root, subfolders, files in os.walk('_examples'):
 
         if not os.path.exists(root[1:]):
             os.mkdir(root[1:])
-        with open(''.join([root[1:], '/', base, '.ipynb']), 'w') as f:
-            nbf.write(content, f)
+
+        exporter = NotebookExporter()
+        output, _ = exporter.from_notebook_node(content)
+        codecs.open(''.join([root[1:], '/', base, '.ipynb']), 'w', encoding='utf-8').write(output)
