@@ -3,7 +3,7 @@ import sys
 import glob
 import shutil
 import nbformat as nbf
-from nbformat.v4 import reads, writes, new_markdown_cell, new_code_cell
+from nbformat.v4 import reads, writes, new_markdown_cell, new_code_cell, new_notebook
 from nbconvert.exporters.notebook import NotebookExporter
 import codecs
 
@@ -50,7 +50,7 @@ for root, subfolders, files in os.walk('_examples'):
         (base, ext) = os.path.splitext(os.path.split(example)[-1])
 
         # Create blank notebook
-        content = nbf.v4.new_notebook()
+        content = new_notebook()
         content['cells'] = [new_markdown_cell(note),
                             new_code_cell(magic + code)]
 
