@@ -44,6 +44,9 @@ COPY generate_notebooks.py .
 RUN python generate_notebooks.py
 RUN rm generate_notebooks.py
 
+RUN mv tutorials notebooks/tutorials
+RUN mv examples notebooks/examples
+
 USER $USER
 
 # Fix matplotlib font cache
