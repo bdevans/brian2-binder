@@ -1,0 +1,6 @@
+# Exclude files from the Docker image
+README.md
+# Dockerfile
+environment.yml
+
+localrun.py
