@@ -1,6 +1,7 @@
 import os
 import sys
 import glob
+import shutil
 import nbformat as nbf
 from nbformat.v4 import reads, writes, new_markdown_cell, new_code_cell
 from nbconvert.exporters.notebook import NotebookExporter
@@ -31,6 +32,8 @@ for notebook in glob.glob('_tutorials/*.ipynb'):
     with open('tutorials/' + filename, 'w') as f:
         nbf.write(content, f)
 
+shutil.rmtree('_tutorials')
+
 
 magic = '''%matplotlib notebook\n'''
 
@@ -55,3 +58,5 @@ for root, subfolders, files in os.walk('_examples'):
         exporter = NotebookExporter()
         output, _ = exporter.from_notebook_node(content)
         codecs.open(''.join([root[1:], '/', base, '.ipynb']), 'w', encoding='utf-8').write(output)
+
+shutil.rmtree('_examples')
