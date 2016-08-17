@@ -27,6 +27,8 @@ RUN conda install --quiet --yes -n python3 \
 
 ### Copy demonstration notebook and config files to home directory
 WORKDIR $HOME
+USER root
+
 RUN git clone git://github.com/brian-team/brian2.git
 RUN mv brian2/tutorials .
 RUN mv brian2/examples .
@@ -34,8 +36,14 @@ RUN rm -rf brian2
 RUN chmod -R +x tutorials
 RUN chmod -R +x examples
 
-RUN chown -R $NB_USER:users /home/$NB_USER/work
+RUN chown -R $USER:users $HOME/tutorials
+RUN chown -R $USER:users $HOME/examples
 
+# Modify tutorials and genenate new notebooks from examples
+COPY generate_notebooks.py .
+RUN python generate_notebooks.py
+
+USER $USER
 
 # Fix matplotlib font cache
 RUN rm -rf /home/main/.matplolib
