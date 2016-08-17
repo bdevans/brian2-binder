@@ -42,15 +42,16 @@ COPY generate_notebooks.py .
 RUN python generate_notebooks.py
 RUN rm generate_notebooks.py
 
-RUN chmod -R +wx tutorials
-RUN chmod -R +wx examples
+RUN chmod -R +x tutorials
+RUN chmod -R +x examples
 
 #RUN mkdir notebooks
 RUN mv tutorials notebooks/tutorials
 RUN mv examples notebooks/examples
 
 USER root
-RUN chown -R main:main $HOME/notebooks
+RUN chown -R main:main $HOME/tutorials
+RUN chown -R main:main $HOME/examples
 USER main
 
 RUN find ./notebooks -name '*.ipynb' -exec jupyter trust {} \;
