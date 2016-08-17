@@ -50,8 +50,8 @@ RUN mv tutorials notebooks/tutorials
 RUN mv examples notebooks/examples
 
 USER root
-RUN chown -R main:main $HOME/tutorials
-RUN chown -R main:main $HOME/examples
+RUN chown -R main:main $HOME/notebooks/tutorials
+RUN chown -R main:main $HOME/notebooks/examples
 USER main
 
 RUN find ./notebooks -name '*.ipynb' -exec jupyter trust {} \;
