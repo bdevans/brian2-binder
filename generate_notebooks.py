@@ -20,7 +20,8 @@ Feel free to create new cells using the plus button (<button class='fa fa-plus i
 <p>Don't rely on this server for anything you want to last - your server will be *deleted after 10 minutes of inactivity*.</p>
 </div>
 '''
-
+if not os.path.exists('tutorials'):
+    os.mkdir('tutorials')
 for notebook in glob.glob('_tutorials/*.ipynb'):
     with open(notebook, 'r') as f:
         content = reads(f.read())
@@ -36,7 +37,8 @@ shutil.rmtree('_tutorials')
 
 
 magic = '''%matplotlib notebook\n'''
-
+if not os.path.exists('examples'):
+    os.mkdir('examples')
 for root, subfolders, files in os.walk('_examples'):
     for file in files:
         if not file.endswith('.py'):
