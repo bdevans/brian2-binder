@@ -42,8 +42,8 @@ COPY generate_notebooks.py .
 RUN python generate_notebooks.py
 RUN rm generate_notebooks.py
 
-RUN chmod -R +x tutorials
-RUN chmod -R +x examples
+RUN chmod -R +wx tutorials
+RUN chmod -R +wx examples
 
 RUN mkdir notebooks
 RUN mv tutorials notebooks/tutorials
