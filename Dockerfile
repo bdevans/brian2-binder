@@ -30,18 +30,19 @@ WORKDIR $HOME
 USER root
 
 RUN git clone git://github.com/brian-team/brian2.git
-RUN mv brian2/tutorials .
-RUN mv brian2/examples .
+RUN mv brian2/tutorials _tutorials
+RUN mv brian2/examples _examples
 RUN rm -rf brian2
-RUN chmod -R +x tutorials
-RUN chmod -R +x examples
+RUN chmod -R +x _tutorials
+RUN chmod -R +x _examples
 
-RUN chown -R $USER:users $HOME/tutorials
-RUN chown -R $USER:users $HOME/examples
+RUN chown -R $USER:users $HOME/_tutorials
+RUN chown -R $USER:users $HOME/_examples
 
 # Modify tutorials and genenate new notebooks from examples
 COPY generate_notebooks.py .
 RUN python generate_notebooks.py
+RUN rm generate_notebooks.py
 
 USER $USER
 
