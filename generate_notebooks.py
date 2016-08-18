@@ -25,7 +25,7 @@ is selected.
 <div class="alert alert-warning" role="alert" style="margin: 10px">
 <p>**WARNING**</p>
 <p>Don't rely on this server for anything you want to last - your server will be
-*deleted after 10 minutes of inactivity*.</p>
+*deleted after 1 hour of inactivity*.</p>
 </div>
 
 This notebook is running on [mybinder.org](http://mybinder.org) created by the
