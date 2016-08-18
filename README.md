@@ -5,7 +5,7 @@ This repository is designed for trying [Brian 2](https://github.com/brian-team/b
 For updates on Brian2, follow us on [twitter (@briansimulator)](https://twitter.com/briansimulator) or [Facebook](https://www.facebook.com/briansimulator). If you have a script or notebook that you would like included in the examples, especially interactive and published models, please [contact us](https://groups.google.com/forum/#!forum/brian-development). 
 
 ## Quickstart
-Click this button to launch the binder directly. [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/bdevans/brian-binder)
+Click this button to launch the binder directly. [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/brian-team/brian2-binder)
 
 ## Manual instructions
 Alternatively, follow these steps to build this, or any other GitHub repository designed for binder (changing the repository URL appropriately). 
