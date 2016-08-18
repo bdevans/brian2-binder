@@ -44,6 +44,7 @@ RUN chmod -R +x examples
 #RUN mkdir notebooks
 RUN mv tutorials notebooks/tutorials
 RUN mv examples notebooks/examples
+RUN mv index.ipynb notebooks/index.ipynb
 
 # Give ownership to 'main' user to allow saving of notebooks
 USER root
