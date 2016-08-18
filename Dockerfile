@@ -35,6 +35,7 @@ RUN rm -rf brian2
 
 # Modify tutorials and genenate new notebooks from examples
 COPY generate_notebooks.py .
+COPY index_template.ipynb .
 RUN python generate_notebooks.py
 RUN rm generate_notebooks.py
 
