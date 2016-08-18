@@ -27,6 +27,9 @@ is selected.
 <p>Don't rely on this server for anything you want to last - your server will be
 *deleted after 10 minutes of inactivity*.</p>
 </div>
+
+This notebook is running on [mybinder.org](http://mybinder.org) created by the
+[Freeman lab](https://www.janelia.org/lab/freeman-lab).
 '''
 if not os.path.exists('tutorials'):
     os.mkdir('tutorials')
