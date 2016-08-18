@@ -10,7 +10,7 @@ RUN conda install --quiet --yes \
     #sphinx \
     #coverage \
     'matplotlib=1.5*' \
-    'cython=0.23*' \
+    'cython=0.24*' \
     'nose=1.3*' \
     'brian2' \
     'brian2tools'
@@ -20,22 +20,18 @@ RUN conda install --quiet --yes -n python3 \
     #sphinx \
     #coverage \
     'matplotlib=1.5*' \
-    'cython=0.23*' \
+    'cython=0.24*' \
     'nose=1.3*' \
     'brian2' \
     'brian2tools'
 
-### Copy demonstration notebook and config files to home directory
+### Generate tutorials/examples notebooks and move to working directory
 WORKDIR $HOME
-#USER root
 
 RUN git clone git://github.com/brian-team/brian2.git
 RUN mv brian2/tutorials _tutorials
 RUN mv brian2/examples _examples
 RUN rm -rf brian2
-
-#RUN chown -R $USER:users $HOME/_tutorials
-#RUN chown -R $USER:users $HOME/_examples
 
 # Modify tutorials and genenate new notebooks from examples
 COPY generate_notebooks.py .
@@ -49,13 +45,13 @@ RUN chmod -R +x examples
 RUN mv tutorials notebooks/tutorials
 RUN mv examples notebooks/examples
 
+# Give ownership to 'main' user to allow saving of notebooks
 USER root
 RUN chown -R main:main $HOME/notebooks/tutorials
 RUN chown -R main:main $HOME/notebooks/examples
 USER main
 
 RUN find ./notebooks -name '*.ipynb' -exec jupyter trust {} \;
-#USER $USER
 
 # Fix matplotlib font cache
 RUN rm -rf /home/main/.matplolib
