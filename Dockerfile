@@ -10,7 +10,7 @@ RUN conda install --quiet --yes \
     #sphinx \
     #coverage \
     'matplotlib=1.5*' \
-    'cython=0.24*' \
+    #'cython=0.24*' \
     'nose=1.3*' \
     'brian2' \
     'brian2tools'
@@ -20,7 +20,7 @@ RUN conda install --quiet --yes -n python3 \
     #sphinx \
     #coverage \
     'matplotlib=1.5*' \
-    'cython=0.24*' \
+    #'cython=0.24*' \
     'nose=1.3*' \
     'brian2' \
     'brian2tools'
