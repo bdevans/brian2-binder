@@ -7,20 +7,14 @@ USER main
 RUN conda config --add channels brian-team
 RUN conda install --quiet --yes \
     'pip=8.1*' \
-    #sphinx \
-    #coverage \
     'matplotlib=1.5*' \
-    #'cython=0.24*' \
     'nose=1.3*' \
     'brian2' \
     'brian2tools'
 
 RUN conda install --quiet --yes -n python3 \
     'pip=8.1*' \
-    #sphinx \
-    #coverage \
     'matplotlib=1.5*' \
-    #'cython=0.24*' \
     'nose=1.3*' \
     'brian2' \
     'brian2tools'
@@ -33,12 +27,10 @@ RUN mv brian2/tutorials _tutorials
 RUN mv brian2/examples _examples
 RUN rm -rf brian2
 
-# Modify tutorials and genenate new notebooks from examples
 COPY generate_notebooks.py .
 COPY index_template.ipynb .
 RUN python generate_notebooks.py
 RUN rm generate_notebooks.py
-
 RUN chmod -R +x tutorials
 RUN chmod -R +x examples
 
