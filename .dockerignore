@@ -1,4 +1,6 @@
 # Exclude files from the Docker image
+.git
+.gitignore
 README.md
 # Dockerfile
 environment.yml
