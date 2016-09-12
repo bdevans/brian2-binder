@@ -58,4 +58,4 @@ docs/_build/
 .spyderproject
 
 # Pylint configuration
-pylintrc
+.pylintrc
