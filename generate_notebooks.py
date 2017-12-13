@@ -86,7 +86,7 @@ shutil.rmtree('_examples')
 
 ###################### GENERATE INDEX NOTEBOOK ###################################
 
-all_tutorials.sort(key=lambda (title, fname): fname)
+all_tutorials.sort(key=lambda notebook: notebook[1])  # Sort by filename
 tutorials_index = ''
 for title, fname in all_tutorials:
     tutorials_index += '* [{title}]({fname})\n'.format(title=title, fname=fname)
