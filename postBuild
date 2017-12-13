@@ -1,0 +1,28 @@
+git clone git://github.com/brian-team/brian2.git
+mv brian2/tutorials _tutorials
+mv brian2/examples _examples
+rm -rf brian2
+
+# These files should be copied into the image from the build context
+# generate_notebooks.py
+# index_template.ipynb
+
+# Generate example and tutorial notebooks
+python generate_notebooks.py
+rm generate_notebooks.py
+chmod -R +x tutorials
+chmod -R +x examples
+
+# Move notebooks into place
+#RUN mkdir notebooks
+mv tutorials notebooks/tutorials
+mv examples notebooks/examples
+mv index.ipynb notebooks/index.ipynb
+
+# Give ownership to 'main' user to allow saving of notebooks
+#USER root
+#RUN chown -R main:main $HOME/notebooks/tutorials
+#RUN chown -R main:main $HOME/notebooks/examples
+#USER main
+
+find ./notebooks -name '*.ipynb' -exec jupyter trust {} \;
