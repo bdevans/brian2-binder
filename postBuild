@@ -14,7 +14,7 @@ chmod -R +x tutorials
 chmod -R +x examples
 
 # Move notebooks into place
-#RUN mkdir notebooks
+mkdir notebooks
 mv tutorials notebooks/tutorials
 mv examples notebooks/examples
 mv index.ipynb notebooks/index.ipynb
