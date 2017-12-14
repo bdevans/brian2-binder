@@ -3,6 +3,6 @@
 .gitignore
 README.md
 # Dockerfile
-environment.yml
+# environment.yml
 
 localrun.py
