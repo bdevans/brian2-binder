@@ -20,6 +20,7 @@ mv examples notebooks/examples
 mv index.ipynb notebooks/index.ipynb
 
 # Give ownership to 'main' user to allow saving of notebooks
+chown -R main:main $HOME/notebooks
 #USER root
 #RUN chown -R main:main $HOME/notebooks/tutorials
 #RUN chown -R main:main $HOME/notebooks/examples
