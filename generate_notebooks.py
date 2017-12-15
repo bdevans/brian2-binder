@@ -10,11 +10,11 @@ import codecs
 all_tutorials = []
 all_examples = []
 
-###################### GENERATE TUTORIAL NOTEBOOKS ###################################
+###################### GENERATE TUTORIAL NOTEBOOKS ############################
 note = '''
 <div class="clearfix" style="padding: 10px; padding-left: 0px">
 <a href="http://briansimulator.org/"><img src="http://briansimulator.org/WordPress/wp-content/ata-images/brian1.png" alt="The Brian spiking neural network simulator" title="The Brian spiking neural network simulator" width="200px" style="display: inline-block; margin-top: 5px;"></a>
-<a href="http://mybinder.org/"><img src="http://mybinder.org/assets/images/logo.svg" alt="binder logo" title="binder" width="375px" class="pull-right" style="display: inline-block; margin: 0px;"></a>
+<a href="http://mybinder.org/"><img src="https://mybinder.org/static/logo.svg" alt="binder logo" title="binder" width="375px" class="pull-right" style="display: inline-block; margin: 0px;"></a>
 </div>
 
 ### Quickstart
@@ -54,7 +54,7 @@ for notebook in glob.glob('_tutorials/*.ipynb'):
 shutil.rmtree('_tutorials')
 
 
-###################### GENERATE EXAMPLES NOTEBOOKS ###################################
+###################### GENERATE EXAMPLES NOTEBOOKS ############################
 
 magic = '''%matplotlib notebook\n'''
 if not os.path.exists('examples'):
@@ -84,16 +84,16 @@ for root, subfolders, files in os.walk('_examples'):
 
 shutil.rmtree('_examples')
 
-###################### GENERATE INDEX NOTEBOOK ###################################
+###################### GENERATE INDEX NOTEBOOK ################################
 
-all_tutorials.sort(key=lambda (title, fname): fname)
+all_tutorials.sort(key=lambda notebook: notebook[1])  # Sort by filename
 tutorials_index = ''
 for title, fname in all_tutorials:
     tutorials_index += '* [{title}]({fname})\n'.format(title=title, fname=fname)
 examples_index = ''
 curroot = ''
 for root, fname in all_examples:
-    if curroot!=root:
+    if curroot != root:
         examples_index += '\n'+'#'*(root.count('/')+3)+' '+root+'\n\n'
         curroot = root
     if root:

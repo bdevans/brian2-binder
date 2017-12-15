@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Clone Brian2 example and tutorial scripts
+git clone git://github.com/brian-team/brian2.git
+mv brian2/tutorials _tutorials
+mv brian2/examples _examples
+rm -rf brian2
+
+# Generate example and tutorial notebooks
+python generate_notebooks.py
+chmod -R +x tutorials
+chmod -R +x examples
+
+# Give ownership to $NB_USER to allow saving of notebooks
+chown -R ${NB_USER} ${HOME}
+
+# Trust notebooks
+find . -name '*.ipynb' -exec jupyter trust {} \;
+
+# Cleanup
+rm generate_notebooks.py
+rm index_template.ipynb
+rm localrun.py
+rm environment.yml
+rm postBuild

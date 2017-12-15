@@ -16,8 +16,6 @@ __pycache__/
 Thumbs.db
 .DS_Store
 
-
-
 # C extensions
 *.so
 
