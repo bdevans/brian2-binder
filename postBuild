@@ -15,7 +15,7 @@ chmod -R +x examples
 chown -R ${NB_USER} ${HOME}
 
 # Trust notebooks
-find ./notebooks -name '*.ipynb' -exec jupyter trust {} \;
+find . -name '*.ipynb' -exec jupyter trust {} \;
 
 # Cleanup
 rm generate_notebooks.py
