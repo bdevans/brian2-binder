@@ -2,7 +2,5 @@
 .git
 .gitignore
 README.md
-# Dockerfile
 # environment.yml
-
 localrun.py
